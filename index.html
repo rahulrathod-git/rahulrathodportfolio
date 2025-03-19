@@ -781,8 +781,16 @@
                     }
                 };
 
-                // Camera position adjustment - move very far back
-                camera.position.z = 30;
+                // Re-enable controls but limit them
+                controls.enabled = true;
+                controls.enableZoom = true;
+                controls.enablePan = false;
+                controls.enableRotate = true;
+                controls.autoRotate = true;        // Add gentle rotation
+                controls.autoRotateSpeed = 1.0;    // Slow rotation speed
+                
+                // Position camera at a moderate distance
+                camera.position.set(0, 2, 10);
 
                 // Load the model
                 try {
@@ -795,10 +803,10 @@
                         (gltf) => {
                             const model = gltf.scene;
                             
-                            // Use an extremely small scale - try 0.0005 (0.05% of original size)
-                            model.scale.set(0.0005, 0.0005, 0.0005);
+                            // Use a much larger scale based on the tiny dimensions
+                            model.scale.set(500, 500, 500);
                             
-                            // Center and position the model specifically
+                            // Center and position the model
                             const box = new THREE.Box3().setFromObject(model);
                             const center = box.getCenter(new THREE.Vector3());
                             
@@ -810,12 +818,12 @@
                             };
                             console.log('Model dimensions:', dimensions);
                             
-                            // Position the model in bottom center of screen with offset
-                            model.position.x = -center.x;
-                            model.position.y = -center.y - 15; // Position lower on the screen
+                            // Position the model in bottom right area of screen
+                            model.position.x = -center.x + 5; // Shift right
+                            model.position.y = -center.y - 2; // Lower position but not extreme
                             model.position.z = -center.z;
                             
-                            // Rotate the model slightly to match the screenshot
+                            // Rotate the model slightly
                             model.rotation.y = Math.PI / 6; // Rotate 30 degrees around y-axis
                             
                             // Add model to the scene
@@ -842,10 +850,10 @@
                                 (gltf) => {
                                     const model = gltf.scene;
                                     
-                                    // Use an extremely small scale - try 0.0005 (0.05% of original size)
-                                    model.scale.set(0.0005, 0.0005, 0.0005);
+                                    // Use a much larger scale based on the tiny dimensions
+                                    model.scale.set(500, 500, 500);
                                     
-                                    // Center and position the model specifically
+                                    // Center and position the model
                                     const box = new THREE.Box3().setFromObject(model);
                                     const center = box.getCenter(new THREE.Vector3());
                                     
@@ -857,12 +865,12 @@
                                     };
                                     console.log('Model dimensions:', dimensions);
                                     
-                                    // Position the model in bottom center of screen with offset
-                                    model.position.x = -center.x;
-                                    model.position.y = -center.y - 15; // Position lower on the screen
+                                    // Position the model in bottom right area of screen
+                                    model.position.x = -center.x + 5; // Shift right
+                                    model.position.y = -center.y - 2; // Lower position but not extreme
                                     model.position.z = -center.z;
                                     
-                                    // Rotate the model slightly to match the screenshot
+                                    // Rotate the model slightly
                                     model.rotation.y = Math.PI / 6; // Rotate 30 degrees around y-axis
                                     
                                     // Add model to the scene
