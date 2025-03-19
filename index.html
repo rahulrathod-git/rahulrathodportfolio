@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Portfolio</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <!-- Updated Three.js and required loaders -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r132/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
     <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
@@ -724,19 +727,22 @@
                 observer.observe(el);
             });
         });
-		
+    </script>
+    
+    <script type="text/babel">
         // React component for the 3D model
         const PortfolioModel = () => {
             const mountRef = React.useRef(null);
 
             React.useEffect(() => {
-                // Scene setup (similar to previous artifact)
+                // Scene setup
                 const scene = new THREE.Scene();
                 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
                 
                 renderer.setSize(window.innerWidth, window.innerHeight);
                 renderer.setClearColor(0x000000, 0);
+                
                 if (mountRef.current) {
                     mountRef.current.appendChild(renderer.domElement);
                 }
@@ -757,29 +763,65 @@
                 controls.minDistance = 3;
                 controls.maxDistance = 10;
 
-                // Load the model
-                const loader = new THREE.GLTFLoader();
-                loader.load(
-                    '/models/3d_desktop_render.glb', // Update this path
-                    (gltf) => {
-                        const model = gltf.scene;
-                        model.scale.set(1, 1, 1);
-                        model.position.set(0, 0, 0);
-                        scene.add(model);
-                        camera.position.z = 5;
-                    },
-                    (xhr) => {
-                        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
-                    },
-                    (error) => {
-                        console.error('An error occurred while loading the model', error);
+                // Create a fallback object that will always display regardless of model loading
+                const fallbackGeometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
+                const fallbackMaterial = new THREE.MeshStandardMaterial({ 
+                    color: 0xe9c46a, // Your accent color
+                    metalness: 0.7,
+                    roughness: 0.3
+                });
+                const fallbackMesh = new THREE.Mesh(fallbackGeometry, fallbackMaterial);
+                scene.add(fallbackMesh);
+
+                // Simple animation for the fallback
+                const animateFallback = () => {
+                    if (fallbackMesh) {
+                        fallbackMesh.rotation.x += 0.005;
+                        fallbackMesh.rotation.y += 0.01;
                     }
-                );
+                };
+
+                // Position camera
+                camera.position.z = 5;
+
+                // Load the model
+                try {
+                    const loader = new THREE.GLTFLoader();
+                    
+                    // Try to load the model
+                    loader.load(
+                        './models/3d_desktop_render.glb', // Make sure to update this path to your actual model path
+                        (gltf) => {
+                            const model = gltf.scene;
+                            model.scale.set(1, 1, 1);
+                            model.position.set(0, 0, 0);
+                            
+                            // Hide the fallback when the model loads successfully
+                            fallbackMesh.visible = false;
+                            
+                            scene.add(model);
+                            console.log('Model loaded successfully');
+                        },
+                        (xhr) => {
+                            console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+                        },
+                        (error) => {
+                            console.error('Error loading the model:', error);
+                            // Keep the fallback visible if there's an error
+                            fallbackMesh.visible = true;
+                        }
+                    );
+                } catch (error) {
+                    console.error('Exception while loading model:', error);
+                    // Keep the fallback visible if there's an exception
+                    fallbackMesh.visible = true;
+                }
 
                 // Animation loop
                 const animate = () => {
                     requestAnimationFrame(animate);
                     controls.update();
+                    animateFallback();
                     renderer.render(scene, camera);
                 };
 
@@ -796,30 +838,38 @@
 
                 // Cleanup
                 return () => {
-                    if (mountRef.current) {
+                    if (mountRef.current && renderer.domElement) {
                         mountRef.current.removeChild(renderer.domElement);
                     }
                     window.removeEventListener('resize', handleResize);
+                    
+                    // Dispose of Three.js resources to prevent memory leaks
+                    scene.remove(fallbackMesh);
+                    fallbackGeometry.dispose();
+                    fallbackMaterial.dispose();
+                    renderer.dispose();
                 };
             }, []);
 
-            return <div ref={mountRef} style={{
-                position: 'fixed',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                zIndex: -1,
-                pointerEvents: 'none'
-            }} />;
+            return React.createElement('div', {
+                ref: mountRef,
+                style: {
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    zIndex: -1,
+                    pointerEvents: 'none'
+                }
+            });
         };
 
         // Render the model
         ReactDOM.render(
-            <PortfolioModel />,
+            React.createElement(PortfolioModel, null),
             document.getElementById('portfolio-model-container')
         );
-
     </script>
 </body>
 </html>
