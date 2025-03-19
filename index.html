@@ -781,16 +781,16 @@
                     }
                 };
 
-                // Re-enable controls but limit them
+                // Position camera further back to show the whole model
+                camera.position.set(0, 0, 15);
+                
+                // Add controls back with gentle rotation
                 controls.enabled = true;
                 controls.enableZoom = true;
                 controls.enablePan = false;
                 controls.enableRotate = true;
-                controls.autoRotate = true;        // Add gentle rotation
-                controls.autoRotateSpeed = 1.0;    // Slow rotation speed
-                
-                // Position camera at a moderate distance
-                camera.position.set(0, 2, 10);
+                controls.autoRotate = true;
+                controls.autoRotateSpeed = 0.5; // Slower rotation
 
                 // Load the model
                 try {
@@ -803,24 +803,24 @@
                         (gltf) => {
                             const model = gltf.scene;
                             
-                            // Use a much larger scale based on the tiny dimensions
-                            model.scale.set(500, 500, 500);
+                            // Scale down - trying 50 instead of 1000
+                            model.scale.set(50, 50, 50);
                             
                             // Center and position the model
                             const box = new THREE.Box3().setFromObject(model);
                             const center = box.getCenter(new THREE.Vector3());
                             
-                            // Calculate model dimensions
+                            // Calculate model dimensions after scaling
                             const dimensions = {
                                 width: box.max.x - box.min.x,
                                 height: box.max.y - box.min.y,
                                 depth: box.max.z - box.min.z
                             };
-                            console.log('Model dimensions:', dimensions);
+                            console.log('Model dimensions after scaling:', dimensions);
                             
-                            // Position the model in bottom right area of screen
-                            model.position.x = -center.x + 5; // Shift right
-                            model.position.y = -center.y - 2; // Lower position but not extreme
+                            // Position the model in the lower portion of the screen
+                            model.position.x = -center.x;
+                            model.position.y = -center.y - 1; // Slight downward adjustment
                             model.position.z = -center.z;
                             
                             // Rotate the model slightly
@@ -850,24 +850,24 @@
                                 (gltf) => {
                                     const model = gltf.scene;
                                     
-                                    // Use a much larger scale based on the tiny dimensions
-                                    model.scale.set(500, 500, 500);
+                                    // Scale down - trying 50 instead of 1000
+                                    model.scale.set(50, 50, 50);
                                     
                                     // Center and position the model
                                     const box = new THREE.Box3().setFromObject(model);
                                     const center = box.getCenter(new THREE.Vector3());
                                     
-                                    // Calculate model dimensions
+                                    // Calculate model dimensions after scaling
                                     const dimensions = {
                                         width: box.max.x - box.min.x,
                                         height: box.max.y - box.min.y,
                                         depth: box.max.z - box.min.z
                                     };
-                                    console.log('Model dimensions:', dimensions);
+                                    console.log('Model dimensions after scaling:', dimensions);
                                     
-                                    // Position the model in bottom right area of screen
-                                    model.position.x = -center.x + 5; // Shift right
-                                    model.position.y = -center.y - 2; // Lower position but not extreme
+                                    // Position the model in the lower portion of the screen
+                                    model.position.x = -center.x;
+                                    model.position.y = -center.y - 1; // Slight downward adjustment
                                     model.position.z = -center.z;
                                     
                                     // Rotate the model slightly
