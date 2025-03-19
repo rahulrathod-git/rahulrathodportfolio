@@ -506,7 +506,7 @@
                 <!-- Project 1 -->
                 <div class="project-card active">
                     <div class="project-image">
-                        <img src="CCRJ_Main2.png" alt="Project 1">
+                        <img src="./images/CCRJ_Main2.png" alt="Project 1">
                     </div>
                     <div class="project-info">
                         <h3>Game Design and Development: National Space Centre Creative Project</h3>
@@ -760,8 +760,8 @@
                 controls.enableDamping = true;
                 controls.dampingFactor = 0.05;
                 controls.screenSpacePanning = false;
-                controls.minDistance = 3;
-                controls.maxDistance = 10;
+                controls.minDistance = 5;  // Prevent zooming in too close
+                controls.maxDistance = 25; // Allow zooming out further
 
                 // Create a fallback object that will always display regardless of model loading
                 const fallbackGeometry = new THREE.TorusKnotGeometry(1, 0.3, 100, 16);
@@ -795,8 +795,8 @@
                         (gltf) => {
                             const model = gltf.scene;
                             
-                            // Set a very small scale - try 0.05 (5% of original size)
-                            model.scale.set(0.05, 0.05, 0.05);
+                            // Use an extremely small scale - try 0.005 (0.5% of original size)
+                            model.scale.set(0.005, 0.005, 0.005);
                             
                             // Center the model
                             const box = new THREE.Box3().setFromObject(model);
@@ -804,6 +804,13 @@
                             model.position.x = -center.x;
                             model.position.y = -center.y;
                             model.position.z = -center.z;
+                            
+                            // Log the model dimensions for debugging
+                            console.log('Model dimensions:', {
+                                width: box.max.x - box.min.x,
+                                height: box.max.y - box.min.y,
+                                depth: box.max.z - box.min.z
+                            });
                             
                             // Add model to the scene
                             scene.add(model);
@@ -829,8 +836,8 @@
                                 (gltf) => {
                                     const model = gltf.scene;
                                     
-                                    // Set a very small scale - try 0.05 (5% of original size)
-                                    model.scale.set(0.05, 0.05, 0.05);
+                                    // Use an extremely small scale - try 0.005 (0.5% of original size)
+                                    model.scale.set(0.005, 0.005, 0.005);
                                     
                                     // Center the model
                                     const box = new THREE.Box3().setFromObject(model);
@@ -838,6 +845,13 @@
                                     model.position.x = -center.x;
                                     model.position.y = -center.y;
                                     model.position.z = -center.z;
+                                    
+                                    // Log the model dimensions for debugging
+                                    console.log('Model dimensions:', {
+                                        width: box.max.x - box.min.x,
+                                        height: box.max.y - box.min.y,
+                                        depth: box.max.z - box.min.z
+                                    });
                                     
                                     // Add model to the scene
                                     scene.add(model);
