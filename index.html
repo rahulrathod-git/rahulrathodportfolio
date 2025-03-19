@@ -781,8 +781,8 @@
                     }
                 };
 
-                // Position camera
-                camera.position.z = 5;
+                // Camera position adjustment - move further back
+                camera.position.z = 15;
 
                 // Load the model
                 try {
@@ -794,9 +794,19 @@
                         './models/3d_desktop_render.glb',
                         (gltf) => {
                             const model = gltf.scene;
-                            // Scale down the model - try a much smaller scale
-                            model.scale.set(0.2, 0.2, 0.2);
-                            model.position.set(0, 0, 0);
+                            
+                            // Set a very small scale - try 0.05 (5% of original size)
+                            model.scale.set(0.05, 0.05, 0.05);
+                            
+                            // Center the model
+                            const box = new THREE.Box3().setFromObject(model);
+                            const center = box.getCenter(new THREE.Vector3());
+                            model.position.x = -center.x;
+                            model.position.y = -center.y;
+                            model.position.z = -center.z;
+                            
+                            // Add model to the scene
+                            scene.add(model);
                             
                             // Hide the fallback when the model loads successfully
                             fallbackMesh.visible = false;
@@ -818,9 +828,19 @@
                                 '/models/3d_desktop_render.glb',
                                 (gltf) => {
                                     const model = gltf.scene;
-                                    // Scale down the model - try a much smaller scale
-                                    model.scale.set(0.2, 0.2, 0.2);
-                                    model.position.set(0, 0, 0);
+                                    
+                                    // Set a very small scale - try 0.05 (5% of original size)
+                                    model.scale.set(0.05, 0.05, 0.05);
+                                    
+                                    // Center the model
+                                    const box = new THREE.Box3().setFromObject(model);
+                                    const center = box.getCenter(new THREE.Vector3());
+                                    model.position.x = -center.x;
+                                    model.position.y = -center.y;
+                                    model.position.z = -center.z;
+                                    
+                                    // Add model to the scene
+                                    scene.add(model);
                                     fallbackMesh.visible = false;
                                     scene.add(model);
                                     console.log('Model loaded successfully from absolute path');
