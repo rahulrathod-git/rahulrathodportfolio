@@ -789,11 +789,13 @@
                     const loader = new THREE.GLTFLoader();
                     
                     // Try to load the model
+                    // Use a simple path now that the file structure is cleaner
                     loader.load(
-                        './models/3d_desktop_render.glb', // Make sure to update this path to your actual model path
+                        './models/3d_desktop_render.glb',
                         (gltf) => {
                             const model = gltf.scene;
-                            model.scale.set(1, 1, 1);
+                            // Scale down the model - try a much smaller scale
+                            model.scale.set(0.2, 0.2, 0.2);
                             model.position.set(0, 0, 0);
                             
                             // Hide the fallback when the model loads successfully
@@ -807,8 +809,30 @@
                         },
                         (error) => {
                             console.error('Error loading the model:', error);
+                            console.log('Falling back to the decorative 3D object');
                             // Keep the fallback visible if there's an error
                             fallbackMesh.visible = true;
+                            
+                            // If the relative path fails, try the absolute path as a backup
+                            loader.load(
+                                '/models/3d_desktop_render.glb',
+                                (gltf) => {
+                                    const model = gltf.scene;
+                                    // Scale down the model - try a much smaller scale
+                                    model.scale.set(0.2, 0.2, 0.2);
+                                    model.position.set(0, 0, 0);
+                                    fallbackMesh.visible = false;
+                                    scene.add(model);
+                                    console.log('Model loaded successfully from absolute path');
+                                },
+                                (xhr) => {
+                                    console.log((xhr.loaded / xhr.total * 100) + '% loaded (absolute path)');
+                                },
+                                (secondError) => {
+                                    console.error('Error loading model from both paths:', secondError);
+                                    // Fallback object remains visible
+                                }
+                            );
                         }
                     );
                 } catch (error) {
