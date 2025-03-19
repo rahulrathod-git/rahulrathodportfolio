@@ -735,9 +735,9 @@
             const mountRef = React.useRef(null);
 
             React.useEffect(() => {
-                // Scene setup
+                // Scene setup with fog for depth effect
                 const scene = new THREE.Scene();
-                const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
                 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
                 
                 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -781,8 +781,8 @@
                     }
                 };
 
-                // Camera position adjustment - move further back
-                camera.position.z = 15;
+                // Camera position adjustment - move very far back
+                camera.position.z = 30;
 
                 // Load the model
                 try {
@@ -795,22 +795,28 @@
                         (gltf) => {
                             const model = gltf.scene;
                             
-                            // Use an extremely small scale - try 0.005 (0.5% of original size)
-                            model.scale.set(0.005, 0.005, 0.005);
+                            // Use an extremely small scale - try 0.0005 (0.05% of original size)
+                            model.scale.set(0.0005, 0.0005, 0.0005);
                             
-                            // Center the model
+                            // Center and position the model specifically
                             const box = new THREE.Box3().setFromObject(model);
                             const center = box.getCenter(new THREE.Vector3());
-                            model.position.x = -center.x;
-                            model.position.y = -center.y;
-                            model.position.z = -center.z;
                             
-                            // Log the model dimensions for debugging
-                            console.log('Model dimensions:', {
+                            // Calculate model dimensions
+                            const dimensions = {
                                 width: box.max.x - box.min.x,
                                 height: box.max.y - box.min.y,
                                 depth: box.max.z - box.min.z
-                            });
+                            };
+                            console.log('Model dimensions:', dimensions);
+                            
+                            // Position the model in bottom center of screen with offset
+                            model.position.x = -center.x;
+                            model.position.y = -center.y - 15; // Position lower on the screen
+                            model.position.z = -center.z;
+                            
+                            // Rotate the model slightly to match the screenshot
+                            model.rotation.y = Math.PI / 6; // Rotate 30 degrees around y-axis
                             
                             // Add model to the scene
                             scene.add(model);
@@ -836,22 +842,28 @@
                                 (gltf) => {
                                     const model = gltf.scene;
                                     
-                                    // Use an extremely small scale - try 0.005 (0.5% of original size)
-                                    model.scale.set(0.005, 0.005, 0.005);
+                                    // Use an extremely small scale - try 0.0005 (0.05% of original size)
+                                    model.scale.set(0.0005, 0.0005, 0.0005);
                                     
-                                    // Center the model
+                                    // Center and position the model specifically
                                     const box = new THREE.Box3().setFromObject(model);
                                     const center = box.getCenter(new THREE.Vector3());
-                                    model.position.x = -center.x;
-                                    model.position.y = -center.y;
-                                    model.position.z = -center.z;
                                     
-                                    // Log the model dimensions for debugging
-                                    console.log('Model dimensions:', {
+                                    // Calculate model dimensions
+                                    const dimensions = {
                                         width: box.max.x - box.min.x,
                                         height: box.max.y - box.min.y,
                                         depth: box.max.z - box.min.z
-                                    });
+                                    };
+                                    console.log('Model dimensions:', dimensions);
+                                    
+                                    // Position the model in bottom center of screen with offset
+                                    model.position.x = -center.x;
+                                    model.position.y = -center.y - 15; // Position lower on the screen
+                                    model.position.z = -center.z;
+                                    
+                                    // Rotate the model slightly to match the screenshot
+                                    model.rotation.y = Math.PI / 6; // Rotate 30 degrees around y-axis
                                     
                                     // Add model to the scene
                                     scene.add(model);
