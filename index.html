@@ -54,11 +54,12 @@
             controls.screenSpacePanning = false;
             controls.minDistance = 2;
             controls.maxDistance = 10;
-            controls.autoRotate = true;
+            controls.autoRotate = false;
             controls.autoRotateSpeed = 0.5;
             // Limit vertical orbit to prevent looking at odd angles
             controls.minPolarAngle = Math.PI / 6; // Limit how high you can orbit
             controls.maxPolarAngle = Math.PI / 2;  // Limit how low you can orbit
+            controls.enableZoom = false;
             
             // Add subtle ambient light
             const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
