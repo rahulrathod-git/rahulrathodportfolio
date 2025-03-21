@@ -98,8 +98,7 @@
                     // Scale to appropriate size
                     model.scale.set(0.3, 0.3, 0.3); // Adjust this value as needed
                     
-                    // Set the model to face straight forward
-                    model.rotation.y = 0; // No rotation, facing front
+                    model.rotation.y = Math.PI / 2; // 90 degree rotation
                     
                     scene.add(model);
                     
