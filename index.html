@@ -42,10 +42,11 @@
             renderer.setSize(container.clientWidth, container.clientHeight);
             container.appendChild(renderer.domElement);
             
-            // Adjust camera for a better viewing angle
+            // Set up camera for a direct front view
             const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.set(4, 2, 4); // Position camera at an angle
+            camera.position.set(0, 0, 5); // Position camera directly in front of the model
             camera.lookAt(new THREE.Vector3(0, 0, 0)); // Look at the center
+
             
             // Customize orbit controls for this presentation style
             const controls = new OrbitControls(camera, renderer.domElement);
@@ -97,8 +98,8 @@
                     // Scale to appropriate size
                     model.scale.set(0.3, 0.3, 0.3); // Adjust this value as needed
                     
-                    // Rotate slightly for better angle
-                    model.rotation.y = Math.PI / 8; // Slight rotation
+                    // Set the model to face straight forward
+                    model.rotation.y = 0; // No rotation, facing front
                     
                     scene.add(model);
                     
