@@ -288,10 +288,10 @@ nav.scrolled {
 .section-title::after {
   content: '';
   position: absolute;
-  bottom: -15px;
+  bottom: -5px;
   left: 50%;
   transform: translateX(-50%);
-  width: 100px;
+  width: 230px;
   height: 3px;
   background: linear-gradient(90deg, #0062E3, #D10000);
 }
@@ -542,9 +542,9 @@ nav.scrolled {
 .about-heading::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -5px;
   left: 0;
-  width: 70px;
+  width: 150px;
   height: 3px;
   background: linear-gradient(90deg, #0062E3, #D10000);
 }
@@ -570,9 +570,9 @@ nav.scrolled {
 .skills-heading::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -5px;
   left: 0;
-  width: 70px;
+  width: 85px;
   height: 3px;
   background: linear-gradient(90deg, #0062E3, #D10000);
 }
@@ -616,10 +616,22 @@ nav.scrolled {
 .contact-title {
   font-size: clamp(1.8rem, 4vw, 2.5rem);
   margin-bottom: 20px;
+  position: relative;
+}
+
+.contact-title::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230px;
+  height: 3px;
+  background: linear-gradient(90deg, #0062E3, #D10000);
 }
 
 .contact-subtitle {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.3vw, 1.2rem);
   color: var(--light-gray);
   margin-bottom: 40px;
 }
@@ -989,14 +1001,10 @@ footer {
         <div class="container hero-content">
             <div class="hero-greeting">Welcome to my portfolio!</div>
             <h1 class="hero-name">I'm Rahul Rathod</h1>
-            <h2 class="hero-title">Future UX Designer</h2>
-            <p class="hero-description">A passionate student who enjoys blending creativity with precision to craft seamless, innovative solutions.</p>
+            <h2 class="hero-title">Creative Computing Student</h2>
+            <p class="hero-description">A passionate student who enjoys blending creativity and technical proficiency to build innovative and impactful applications</p>
             <a href="#projects" class="cta-button">View My Projects</a>
-            <div class="social-links">
-                <a href="https://github.com/RR-2912" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-            </div>
         </div>
-        <div class="animated-background"></div>
     </section>
 	
     <!-- About Section -->
@@ -1005,9 +1013,9 @@ footer {
             <div class="about-content">
                 <div class="about-text">
                     <h2 class="about-heading">About Me</h2>
-                    <p class="about-description">I'm a Creative Computing student at the University of Leicester, with a strong passion for UX Design and Games Development. Over the years, I have earned valuable experience in a range of programming languages and enviroments.</p>
-                    <p class="about-description">I genuinely enjoy blending both my creative and technical skills to create applications that are functional, visually appealing and user-friendly. Additionally, I am constantly seeking opportunities to learn and improve, allowing me to keep expanding upon my skills. </p>
-                    <p class="about-description">When I'm not coding or designing, I enjoy travelling and bike riding to explore the outdoors with friends and family. </p>
+                    <p class="about-description">I'm a Creative Computing student at the University of Leicester, with a strong passion for Games Development and UX Design. Over the years, I've developed proficiency in various programming languages, environments and design software, equipping me with the skills to create forward-thinking and effective solutions.</p>
+                    <p class="about-description">My approach combines technical precision with a user-centred mindset, ensuring every project I create is both functional and visually appealing. I’m committed to continuous learning, always seeking opportunities to expand my knowledge and refine my skills.</p>
+                    <p class="about-description">Outside of coding and designing, I love travelling to explore new places, staying active through bike riding, and enjoying the outdoors with friends and family.</p>
                 </div>
                 
                 <div class="about-skills">
@@ -1044,7 +1052,7 @@ footer {
             <span class="project-tag">Unity</span>
             <span class="project-tag">C#</span>
           </div>
-          <p class="project-brief">Worked with <a href="https://nsccreative.com/" target="_blank">NSC Creative</a> as clients to develop a 3D educational game for children, including a business deck on monetization, marketing, and audience.</p>
+          <p class="project-brief">Developed a 3D space adventure game for <a href="https://nsccreative.com/" target="_blank">NSC Creative</a>, designed to educate children aged 7-12 through an interactive avatar sharing fun facts about the Outer Planets.</p>
           <div class="project-links">
             <a href="https://github.com/rahulrathod-git/rahulrathodportfolio/releases/download/CCRJ/CCRJ_Windows_Build.zip" class="project-link primary-link" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -1065,7 +1073,7 @@ footer {
             <span class="project-tag">Unity</span>
             <span class="project-tag">C#</span>
           </div>
-          <p class="project-brief">2D endless runner with progressive difficulty, featuring energy cell collection and obstacle avoidance in a futuristic city.</p>
+          <p class="project-brief">Developed Energy City Run, a 2D endless runner set in a futuristic city, where players collect energy cells, avoid traps, and test their reflexes with increasing difficulty.</p>
           <div class="project-links">
             <a href="https://github.com/RR-2912/rahulrathodportfolio/releases/download/EneryCityRun/Energy.City.Run.v1.0.zip" class="project-link primary-link" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -1088,7 +1096,7 @@ footer {
             <span class="project-tag">CSS</span>
             <span class="project-tag">JavaScript</span>
           </div>
-          <p class="project-brief">Web-based Personal Information Vault for securely storing sensitive data with intuitive folder organization.</p>
+          <p class="project-brief">Developed Secure Data Vault Systems (SDVS), a web-based application that securely stores sensitive data with an intuitive interface for easy folder management and enhanced protection.</p>
           <div class="project-links">
             <a href="https://rahulrathod-git.github.io/SDVS/" class="project-link primary-link" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -1114,7 +1122,7 @@ footer {
             <span class="project-tag">CSS</span>
             <span class="project-tag">JavaScript</span>
           </div>
-          <p class="project-brief">Web-based tool that calculates Net Present Value (NPV) of multiple projects, streamlining financial evaluation.</p>
+          <p class="project-brief">Developed the Project Calculator, a web-based tool that calculates the Net Present Value (NPV) of projects and compares them to identify the most profitable option.</p>
           <div class="project-links">
             <a href="https://rahulrathod-git.github.io/TheProjectCalculator/" class="project-link primary-link" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
@@ -1135,12 +1143,9 @@ footer {
     <section id="contact">
         <div class="container">
             <div class="contact-content">
-                <h2 class="contact-title">Get In Touch</h2>
-                <p class="contact-subtitle">Have a project in mind or want to chat? Feel free to reach out!</p>
+                <h2 class="contact-title">Contact me</h2>
+                <p class="contact-subtitle">Have an opportunity or any questions for me? Feel free to reach out!</p>
                 <a href="mailto:Rahul.Rathodd@outlook.com" class="contact-email">Rahul.Rathodd@outlook.com</a>
-                <div class="contact-social">
-                    <a href="#" title="GitHub"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg></a>
-                </div>
             </div>
         </div>
     </section>
@@ -1345,40 +1350,6 @@ footer {
                 behavior: 'smooth'
             });
         });
-
-        // Background particles
-        const animatedBg = document.querySelector('.animated-background');
-
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.style.position = 'absolute';
-            particle.style.width = Math.random() * 5 + 1 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.background = Math.random() > 0.5 ? 
-                'rgba(0, 98, 227, 0.3)' : 'rgba(209, 0, 0, 0.3)';
-            particle.style.borderRadius = '50%';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.opacity = '0';
-            particle.style.transition = 'opacity 0.5s ease, transform 5s linear';
-            
-            animatedBg.appendChild(particle);
-            
-            setTimeout(() => {
-                particle.style.opacity = '0.5';
-                particle.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px)`;
-                
-                setTimeout(() => {
-                    particle.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        animatedBg.removeChild(particle);
-                    }, 500);
-                }, 4500);
-            }, 100);
-        }
-
-        setInterval(createParticle, 300);
     </script>
 </body>
 </html>
