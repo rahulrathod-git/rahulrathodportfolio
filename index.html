@@ -1191,16 +1191,15 @@ footer {
         });
 
         // GSAP animations
-        function initAnimations() {
-            // Hero animations
-            gsap.to('.hero-greeting', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' });
-            gsap.to('.hero-name', { opacity: 1, y: 0, duration: 0.8, delay: 0.2, ease: 'power3.out' });
-            gsap.to('.hero-title', { opacity: 1, y: 0, duration: 0.8, delay: 0.4, ease: 'power3.out' });
-            gsap.to('.hero-description', { opacity: 1, y: 0, duration: 0.8, delay: 0.6, ease: 'power3.out' });
-            gsap.to('.cta-button', { opacity: 1, y: 0, duration: 0.8, delay: 0.8, ease: 'power3.out' });
-            gsap.to('.social-links', { opacity: 1, y: 0, duration: 0.8, delay: 1, ease: 'power3.out' });
-            
-            gsap.registerPlugin(ScrollTrigger);
+		function initAnimations() {
+			gsap.to(['.hero-greeting', '.hero-name', '.hero-title', '.hero-description', '.cta-button', '.social-links'], { 
+				opacity: 1, 
+				y: 0, 
+				duration: 0.8, 
+				ease: 'power3.out',
+				stagger: 0
+			});
+			gsap.registerPlugin(ScrollTrigger);
             
             // Projects animations
             gsap.to('.section-title', { 
@@ -1228,7 +1227,7 @@ footer {
             });
             
             // About section
-            gsap.to('.about-text', { 
+			gsap.to('.about-heading', { 
                 scrollTrigger: { 
                     trigger: '#about', 
                     start: 'top 80%' 
@@ -1238,21 +1237,44 @@ footer {
                 duration: 0.8, 
                 ease: 'power3.out' 
             });
-            
-            gsap.to('.about-skills', { 
+
+			gsap.to('.about-text', { 
+				scrollTrigger: { 
+					trigger: '#about', 
+					start: 'top 70%' 
+				},
+				opacity: 1, 
+				y: 0, 
+				duration: 0.8,
+				stagger: 0.15,
+				ease: 'power3.out' 
+			});
+			
+			gsap.to('.skills-heading', { 
                 scrollTrigger: { 
                     trigger: '#about', 
-                    start: 'top 60%' 
+                    start: 'top 80%' 
                 },
                 opacity: 1, 
                 y: 0, 
                 duration: 0.8, 
-                delay: 0.2,
                 ease: 'power3.out' 
             });
-            
+	
+			gsap.to('.about-skills', { 
+				scrollTrigger: { 
+					trigger: '#about', 
+					start: 'top 70%' 
+				},
+				opacity: 1, 
+				y: 0, 
+				duration: 0.8, 
+				stagger: 0.15,
+				ease: 'power3.out' 
+			});
+	
             // Contact section
-            gsap.to('.contact-content', { 
+			gsap.to('.contact-title', { 
                 scrollTrigger: { 
                     trigger: '#contact', 
                     start: 'top 80%' 
@@ -1260,6 +1282,18 @@ footer {
                 opacity: 1, 
                 y: 0, 
                 duration: 0.8, 
+                ease: 'power3.out' 
+            });
+			
+            gsap.to('.contact-content', { 
+                scrollTrigger: { 
+                    trigger: '#contact', 
+                    start: 'top 70%' 
+                },
+                opacity: 1, 
+                y: 0, 
+                duration: 0.8,
+				stagger: 0.15,
                 ease: 'power3.out' 
             });
         }
