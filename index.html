@@ -744,7 +744,7 @@ footer {
 }
 
 .preloader-logo {
-  font-size: 2rem;
+  font-size: clamp(2rem, 3vw, 3.5rem);
   font-weight: 700;
   background: linear-gradient(90deg, #0062E3, #D10000);
   -webkit-background-clip: text;
@@ -754,11 +754,12 @@ footer {
 }
 
 .preloader-bar {
-  width: 200px;
-  height: 3px;
+  width: clamp(200px, 20vw, 350px);
+  height: clamp(3px, 0.5vw, 6px);
   background: var(--dark-grey);
   position: relative;
   overflow: hidden;
+  border-radius: 3px;
 }
 
 .preloader-progress {
@@ -1019,6 +1020,17 @@ footer {
   
   .nav-links a {
     font-size: 1.2rem;
+  }
+  
+  .preloader-logo {
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .preloader-bar {
+    width: 350px;
+    height: 6px;
+    border-radius: 4px;
   }
   
   .hero-greeting {
