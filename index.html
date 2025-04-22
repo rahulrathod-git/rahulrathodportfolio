@@ -936,6 +936,26 @@ footer {
 }
 
 @media (min-width: 1200px) {
+  nav {
+    padding: 20px 0;
+  }
+  
+  nav.scrolled {
+    padding: 15px 0;
+  }
+  
+  .nav-container {
+    max-width: 1200px;
+  }
+  
+  .logo {
+    font-size: 28px;
+  }
+  
+  .nav-links a {
+    font-size: 1.1rem;
+  }
+  
   .hero-content {
     max-width: clamp(800px, 70%, 1400px);
     margin: 0 auto;
@@ -965,12 +985,40 @@ footer {
   #contact .container {
     width: clamp(70%, 85%, 1800px);
   }
+  
+  .project-brief {
+    font-size: 0.9rem;
+  }
 }
 
 @media (min-width: 1800px) {
+  nav {
+    padding: 30px 0;
+  }
+  
+  nav.scrolled {
+    padding: 25px 0;
+  }
+  
   .container {
     max-width: 1600px;
     width: 80%;
+  }
+  
+  .nav-container {
+    max-width: 1600px;
+  }
+  
+  .logo {
+    font-size: 32px;
+  }
+  
+  .nav-links {
+    gap: 35px;
+  }
+  
+  .nav-links a {
+    font-size: 1.2rem;
   }
   
   .hero-content,
@@ -1005,7 +1053,6 @@ footer {
   }
   
   .about-description,
-  .project-brief,
   .contact-subtitle {
     font-size: clamp(1rem, 1.2vw, 1.2rem);
   }
@@ -1014,8 +1061,12 @@ footer {
     padding: clamp(80px, 10vh, 150px) 0;
   }
   
-  .nav-container {
-    max-width: 1600px;
+  .project-brief {
+    font-size: 0.9rem;
+  }
+  
+  .project-title {
+    font-size: 1.3rem;
   }
 }
 
@@ -1024,26 +1075,38 @@ footer {
     font-size: 18px;
   }
   
+  nav {
+    padding: 35px 0;
+  }
+  
+  nav.scrolled {
+    padding: 30px 0;
+  }
+  
   .container {
     max-width: 1800px;
     width: 75%;
   }
   
-  .projects-grid {
-    max-width: 1600px;
-    margin: 0 auto;
-  }
-  
-  .nav-links {
-    gap: 40px;
-  }
-  
-  .nav-links a {
-    font-size: 1.2rem;
+  .nav-container {
+    max-width: 1800px;
   }
   
   .logo {
-    font-size: 32px;
+    font-size: 38px;
+  }
+  
+  .nav-links {
+    gap: 50px;
+  }
+  
+  .nav-links a {
+    font-size: 1.3rem;
+  }
+  
+  .projects-grid {
+    max-width: 1600px;
+    margin: 0 auto;
   }
   
   .skill-item {
@@ -1063,6 +1126,14 @@ footer {
   .project-link.primary-link {
     padding: 8px 16px;
     font-size: 0.85rem;
+  }
+  
+  .project-brief {
+    font-size: 0.9rem;
+  }
+  
+  .project-title {
+    font-size: 1.35rem;
   }
 }
     </style>
