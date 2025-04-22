@@ -38,7 +38,6 @@ body {
   padding: 0 20px;
 }
 
-/* Nav */
 nav {
   position: fixed;
   top: 0;
@@ -122,7 +121,6 @@ nav.scrolled {
   cursor: pointer;
 }
 
-/* Hero */
 #hero {
   min-height: 100vh;
   display: flex;
@@ -268,7 +266,6 @@ nav.scrolled {
   transform: translateY(-5px);
 }
 
-/* Projects */
 #projects {
   padding: 80px 0;
   min-height: 80vh;
@@ -507,7 +504,6 @@ nav.scrolled {
   border-color: rgba(160, 160, 160, 0.3);
 }
 
-/* About */
 #about {
   padding: 100px 0;
   min-height: 100vh;
@@ -597,7 +593,6 @@ nav.scrolled {
   background: linear-gradient(135deg, rgba(0, 98, 227, 0.2), rgba(209, 0, 0, 0.2));
 }
 
-/* Contact */
 #contact {
   padding: 100px 0;
   min-height: 100vh;
@@ -714,7 +709,6 @@ nav.scrolled {
   transform: translateY(-5px) scale(1.1);
 }
 
-/* Footer */
 footer {
   padding: 30px 0;
   text-align: center;
@@ -732,7 +726,6 @@ footer {
   font-size: clamp(0.8rem, 1vw, 0.9rem);
 }
 
-/* Preloader */
 .preloader {
   position: fixed;
   top: 0;
@@ -777,7 +770,6 @@ footer {
   background: linear-gradient(90deg, #0062E3, #D10000);
 }
 
-/* Back to top */
 .back-to-top {
   position: fixed;
   bottom: 20px;
@@ -807,7 +799,6 @@ footer {
   transform: translateY(-5px);
 }
 
-/* Shapes */
 .shape {
   position: absolute;
   opacity: 0.15;
@@ -855,7 +846,6 @@ footer {
   animation: cardSpacing 0.5s forwards;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .nav-links {
     position: fixed;
@@ -947,27 +937,132 @@ footer {
 
 @media (min-width: 1200px) {
   .hero-content {
-    text-align: center;
+    max-width: clamp(800px, 70%, 1400px);
     margin: 0 auto;
+    text-align: center;
+  }
+  
+  .hero-description {
+    max-width: clamp(600px, 70%, 800px);
+    margin-left: auto;
+    margin-right: auto;
   }
   
   .hero-content .social-links {
     justify-content: center;
   }
   
-  .hero-description {
-    margin-left: auto;
-    margin-right: auto;
+  .projects-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  
+  #hero .container,
+  #about .container,
+  #projects .container,
+  #contact .container {
+    width: clamp(70%, 85%, 1800px);
   }
 }
 
 @media (min-width: 1800px) {
   .container {
-    max-width: 1500px;
+    max-width: 1600px;
+    width: 80%;
   }
   
-  .hero-content {
+  .hero-content,
+  .about-content,
+  .contact-content {
     max-width: 70%;
+    margin: 0 auto;
+  }
+  
+  .projects-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+  
+  .hero-name {
+    font-size: clamp(3.5rem, 5vw, 6rem);
+  }
+  
+  .hero-title {
+    font-size: clamp(1.8rem, 3vw, 3rem);
+  }
+  
+  .about-content {
+    gap: 80px;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+  
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+  
+  .about-description,
+  .project-brief,
+  .contact-subtitle {
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+  }
+  
+  #hero, #about, #projects, #contact {
+    padding: clamp(80px, 10vh, 150px) 0;
+  }
+  
+  .nav-container {
+    max-width: 1600px;
+  }
+}
+
+@media (min-width: 2400px) {
+  body {
+    font-size: 18px;
+  }
+  
+  .container {
+    max-width: 1800px;
+    width: 75%;
+  }
+  
+  .projects-grid {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  
+  .nav-links {
+    gap: 40px;
+  }
+  
+  .nav-links a {
+    font-size: 1.2rem;
+  }
+  
+  .logo {
+    font-size: 32px;
+  }
+  
+  .skill-item {
+    padding: 15px;
+    font-size: 1rem;
+  }
+  
+  #hero, #about, #projects, #contact {
+    padding: clamp(100px, 12vh, 200px) 0;
+  }
+  
+  .cta-button {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+  
+  .project-link.primary-link {
+    padding: 8px 16px;
+    font-size: 0.85rem;
   }
 }
     </style>
